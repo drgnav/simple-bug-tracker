@@ -1,0 +1,93 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	template="/templates/filteredlist.xhtml">
+	<ui:define name="metadata">
+	</ui:define>
+	<ui:param name="filteredList" value="#{bugList}" />
+	<ui:define name="title">Bug list form</ui:define>
+	<ui:define name="searchAddFilter">
+		<h:panelGrid columns="3">
+			<h:outputText value="#{msg['bug.number']}:" />
+			<h:inputText value="#{bugList.bugNumber}" id="bug_number" size="50" />
+			<rich:message for="bug_number" showSummary="true" showDetail="false" />
+			<h:outputText value="#{msg['description']}:" />
+			<h:inputText value="#{bugList.description}" id="bug_description" size="50" />
+			<rich:message for="bug_description" showSummary="true" showDetail="false" />
+			<h:outputText value="#{msg['author']}:" />
+			<h:inputText value="#{bugList.author.username}" id="bug_author" size="50" 
+				readonly="#{toolbar.authorBugsActive}"/>
+			<rich:message for="bug_author" showSummary="true" showDetail="false"/>
+			<h:outputText value="#{msg['executor']}:"/>
+			<h:inputText value="#{bugList.executor.username}" id="bug_executor" size="50" 
+				readonly="#{toolbar.myBugsActive}"/>
+			<rich:message for="bug_executor" showSummary="true" showDetail="false"/>
+			<h:outputText value="#{msg['bug.state']}:" />
+			<h:selectOneMenu value="#{bugList.state.id}" id="bug_state">
+				<f:selectItems value="#{btUtils.getStates(true)}"/>
+			</h:selectOneMenu>
+			<rich:message for="bug_state" showSummary="true" showDetail="false" />
+		</h:panelGrid>
+	</ui:define>
+
+	<ui:define name="tableColumns">
+		<rich:column>
+			<f:facet name="header">#{msg['id']}</f:facet>
+			<h:outputText value="#{item.id}" />
+		</rich:column>
+
+		<rich:column width="100">
+			<f:facet name="header">#{msg['bug.number']}</f:facet>
+			<h:outputText value="#{item.bugNumber}" />
+		</rich:column>
+
+		<rich:column width="400">
+			<f:facet name="header">#{msg['description']}</f:facet>
+			<h:outputText value="#{item.description}" />
+		</rich:column>
+
+		<rich:column width="200">
+			<f:facet name="header">#{msg['author']}</f:facet>
+			<h:outputText value="#{item.author.username}" />
+		</rich:column>
+
+		<rich:column width="200">
+			<f:facet name="header">#{msg['executor']}</f:facet>
+			<h:outputText value="#{item.executor.username}" />
+		</rich:column>
+
+		<rich:column width="100">
+			<f:facet name="header">#{msg['bug.state']}</f:facet>
+			<h:outputText value="#{item.state.name}" />
+		</rich:column>
+
+		<rich:column>
+			<f:facet name="header">#{msg['actions']}</f:facet>
+			<h:panelGrid columns="2">
+				<h:panelGroup>
+					<h:link outcome="/pages/edit/bug.xhtml?faces-redirect=true">
+						<f:param name="bugid" value="#{item.id}" />
+						<h:graphicImage value="/img/edit.gif"
+							title="#{msg['edit']}" />
+					</h:link>
+				</h:panelGroup>
+
+				<h:panelGroup style="margin-left:8px">
+					<ui:param name="deleteHandler"
+						value="return confirm('#{msg['delete']}');" />
+					<h:commandLink actionListener="#{bugList.deleteBug(item.id)}"
+						onclick="#{deleteHandler}"
+						rendered="#{bugList.isDeletable(item.id)}">
+						<f:attribute name="reqid" value="#{item.id}" />
+						<a4j:ajax render="@form" />
+						<h:graphicImage value="/img/delete.gif"
+							title="#{msg['delete']}" />
+					</h:commandLink>
+				</h:panelGroup>
+			</h:panelGrid>
+		</rich:column>
+	</ui:define>
+</ui:composition>

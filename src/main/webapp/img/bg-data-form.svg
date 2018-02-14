@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="1920px" height="829px" viewBox="0 0 1920 829" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" preserveAspectRatio="none">
+    <defs>
+        <polygon id="path-1" points="1084.24494 714.576953 1928.45044 635.973925 1095.82814 846.973564"></polygon>
+        <linearGradient x1="0.625%" y1="0%" x2="91.1546204%" y2="88.1286982%" id="linearGradient-3">
+            <stop stop-color="#1292C2" offset="0%"></stop>
+            <stop stop-color="#1C64B0" offset="100%"></stop>
+        </linearGradient>
+        <polygon id="path-4" points="0 274 1930 0 1930 555 0 829"></polygon>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Artboard" transform="translate(0.000000, -13598.000000)">
+            <g id="Group-5-Copy" transform="translate(-4.500000, 13598.000000)">
+                <polygon id="Mask" fill="#2777BF" transform="translate(1401.076172, 676.457031) scale(-1, 1) translate(-1401.076172, -676.457031) " points="877.652344 548.289062 1924.5 637.695312 877.652344 804.625"></polygon>
+                <mask id="mask-2" fill="white">
+                    <use xlink:href="#path-1"></use>
+                </mask>
+                <use id="Mask" fill="#FFFFFF" opacity="0.1" transform="translate(1506.347687, 741.473744) scale(-1, 1) rotate(5.000000) translate(-1506.347687, -741.473744) " xlink:href="#path-1"></use>
+                <mask id="mask-5" fill="white">
+                    <use xlink:href="#path-4"></use>
+                </mask>
+                <use id="Mask" fill="url(#linearGradient-3)" xlink:href="#path-4"></use>
+                <polygon id="Path-11" fill="#FFFFFF" opacity="0.1" mask="url(#mask-5)" points="4.5 655.097656 713.525391 729.123047 -5.47460938 834.302734"></polygon>
+                <polygon id="Path-11-Copy" fill="#FFFFFF" opacity="0.1" mask="url(#mask-5)" points="2.64827488 742.804688 707.539564 728.432182 2.64827488 834.295722"></polygon>
+            </g>
+        </g>
+    </g>
+</svg>

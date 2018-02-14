@@ -1,0 +1,44 @@
+<f:view xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+	<f:metadata>
+		<ui:insert name="metadata" />
+	</f:metadata>
+	<h:head>
+        <ui:include src="styling.xhtml"/>
+	</h:head>
+	<h:body>
+		<div>
+			<h:form>
+				<rich:toolbar styleClass="menutoolbar" width="100%">
+					<a4j:commandButton type="button" value="#{msg['my.bugs']}"
+						styleClass="tablinks#{toolbar.myBugsActive ? ' active' : ''}"
+						action="#{toolbar.myBugsTabClick}" />
+					<a4j:commandButton type="button" value="#{msg['author.bugs']}"
+						styleClass="tablinks#{toolbar.authorBugsActive ? ' active' : ''}"
+						action="#{toolbar.authorBugsTabClick}" />
+					<a4j:commandButton type="button" value="#{msg['all.bugs']}"
+						styleClass="tablinks#{toolbar.allBugsActive ? ' active' : ''}"
+						rendered="#{toolbar.usersVisiable}"
+						action="#{toolbar.allBugsTabClick}" />
+					<a4j:commandButton value="#{msg['users']}"
+						styleClass="tablinks#{toolbar.usersActive ? ' active' : ''}"
+						rendered="#{toolbar.usersVisiable}"
+						action="#{toolbar.usersTabClick()}" />
+					<a4j:commandButton value="#{msg['my.profile']}"
+						styleClass="tablinks#{toolbar.profileActive ? ' active' : ''}"
+						action="#{toolbar.profileTabClick}" />
+					<h:commandButton value="#{msg['exit']}"
+						styleClass="tablinks allign-right"
+						action="#{toolbar.logout}" />
+				</rich:toolbar>
+			</h:form>
+		</div>
+		<div>
+			<ui:insert name="pageContent" />
+		</div>
+	</h:body>
+</f:view>

@@ -1,0 +1,78 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	template="/templates/filteredlist.xhtml">
+	<f:metadata>
+		<f:event type="preRenderView" listener="#{toolbar.onUsersLoad}" />
+	</f:metadata>
+	<ui:define name="metadata">
+	</ui:define>
+	<ui:param name="filteredList" value="#{userList}" />
+	<ui:define name="title">User list form</ui:define>
+	<ui:define name="searchAddFilter">
+		<h:panelGrid columns="3">
+			<h:outputText value="#{msg['user.name']}:" />
+			<h:inputText value="#{userList.name}" id="user_name" size="50" />
+			<rich:message for="user_name" showSummary="true" showDetail="false" />
+			<h:outputText value="#{msg['state']}:" />
+			<h:selectOneMenu value="#{userList.active}" id="user_active">
+				<f:selectItems value="#{userList.activeList}" var="item"
+					itemValue="#{item.value}" itemLabel="#{item.label}" />
+			</h:selectOneMenu>
+			<rich:message for="user_active" showSummary="true" showDetail="false" />
+			<h:outputText value="#{msg['roles']}:" />
+			<h:selectManyListbox value="#{userList.roles}" id="user_roles">
+				<f:selectItems value="#{userList.selectRoles}" var="role" 
+					itemValue="#{role.id}"
+					itemLabel="#{role.name}" />
+			</h:selectManyListbox>
+			<rich:message for="user_roles" showSummary="true" showDetail="false" />
+		</h:panelGrid>
+	</ui:define>
+
+	<ui:define name="tableColumns">
+		<rich:column>
+			<f:facet name="header">#{msg['id']}</f:facet>
+			<h:outputText value="#{item.id}" />
+		</rich:column>
+
+		<rich:column width="200">
+			<f:facet name="header">#{msg['name']}</f:facet>
+			<h:outputText value="#{item.username}" />
+		</rich:column>
+
+		<rich:column width="400">
+			<f:facet name="header">#{msg['roles']}</f:facet>
+			<h:outputText value="#{item.rolesAsString}" />
+		</rich:column>
+
+		<rich:column>
+			<f:facet name="header">#{msg['actions']}</f:facet>
+			<h:panelGrid columns="2">
+				<h:panelGroup>
+					<h:link outcome="useredit?faces-redirect=true">
+						<f:param name="userid" value="#{item.id}" />
+						<h:graphicImage value="/img/edit.gif"
+							title="#{msg['edit']}" />
+					</h:link>
+				</h:panelGroup>
+
+				<h:panelGroup style="margin-left:8px">
+					<ui:param name="deleteHandler"
+						value="return confirm('#{msg['delete']}');" />
+					<h:commandLink actionListener="#{userList.deleteUser(item.id)}"
+						onclick="#{deleteHandler}"
+						rendered="#{userList.isDeletable(item.id)}">
+						<f:attribute name="reqid" value="#{item.id}" />
+						<a4j:ajax render="@form" />
+						<h:graphicImage value="/img/delete.gif"
+							title="#{msg['delete']}" />
+					</h:commandLink>
+				</h:panelGroup>
+			</h:panelGrid>
+		</rich:column>
+	</ui:define>
+</ui:composition>

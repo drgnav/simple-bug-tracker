@@ -1,0 +1,38 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	template="/templates/toolbar.xhtml">
+	<ui:define name="pageContent">
+		<h:form id="mainForm" prependId="false">
+			<rich:messages id='form-msg' layout="table" globalOnly="true" />
+
+			<rich:panel header="#{filteredList.headerString}">
+
+				<ui:insert name="searchAddFilter" />
+
+				<a4j:commandButton value="#{msg['search']}"
+					action="#{filteredList.search}" render="results" />
+				<a4j:commandButton value="#{msg['clear.filter']}"
+					action="#{filteredList.clearFilter}" render="mainForm result" />
+				<a4j:commandButton value="#{msg['add']}"
+					action="#{filteredList.addItem}" render="mainForm results" 
+					rendered="#{toolbar.addButtonVisiable}"/>
+			</rich:panel>
+
+			<rich:panel id="results">
+				<h:outputText value="#{msg['rows.count']} #{filteredList.rowsCount}" />
+
+				<rich:extendedDataTable id="reqTable" value="#{filteredList.items}"
+					var="item" rows="#{filteredList.updatePageSize(20)}" selectionMode="single">
+					<ui:insert name="tableColumns" />
+					<f:facet name="footer">
+						<rich:dataScroller />
+					</f:facet>
+				</rich:extendedDataTable>
+			</rich:panel>
+		</h:form>
+	</ui:define>
+</ui:composition>

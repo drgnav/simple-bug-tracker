@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8"></meta>
+<meta
+	content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0, width=device-width"
+	name="viewport"></meta>
+<title></title>
+<link href="css/old.css" rel="stylesheet"></link>
+
+<script type="text/javascript" src="js/jquery.min.js"></script>
+<script type="text/javascript" src="js/jquery-ui.min.js"></script>
+<script type="text/javascript" src="js/bugtracker.js"></script>
+
+</head>
+<body>
+	<div class="tab">
+		<button id='users-btn' class="tablinks"
+			onclick="openTab(event, 'by-users')" th:text="#{users}"></button>
+		<button id='bugs-btn' class="tablinks"
+			onclick="openTab(event, 'by-bugs')" th:text="#{bugs}"></button>
+		<button id='profile-btn' class="tablinks"
+			onclick="openTab(event, 'by-profile')" th:text="#{my.profile}"></button>
+	</div>
+
+	<div id="by-users" class="tabcontent">
+		<div></div>
+	</div>
+
+	<div id="by-bugs" class="tabcontent">
+		<div></div>
+	</div>
+
+	<div id="by-profile" class="tabcontent">
+		<div>
+			<label>Output</label> <h:outputText value="#{userList.welcomeMessage}"></h:outputText>
+		</div>
+	</div>
+</body>
+</html>

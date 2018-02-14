@@ -1,0 +1,214 @@
+
+.data .fias-form {
+    margin: 50px auto 25px;
+}
+.data .fias-form h3 {
+    text-align: center;
+}
+
+.fias-form > .btn{
+    margin: 75px auto 0;
+    text-align: center;
+    background: #1C64B0;
+    color: #fff;
+    display: block;
+    width: 250px;
+}
+
+/* Style the tab */
+div.tab {
+    overflow: hidden;
+    width: 279px;
+    margin: 0 auto;
+}
+
+/* Style the buttons inside the tab */
+div.tab button {
+    background-color: inherit;
+    float: left;
+    outline: none;
+    cursor: pointer;
+    padding: 14px 10px;
+    transition: 0.3s;
+    border: none;
+    border-bottom: 1px solid transparent;
+    color: #597a8d;
+    font-size: 0.875rem;
+}
+
+/* Change background color of buttons on hover */
+div.tab button:hover {
+    color: #384144;
+}
+
+/* Create an active/current tablink class */
+div.tab button.active {
+    border-bottom-color: #1C64B0;
+    font-weight: 600;
+    color: #384144;
+}
+
+/* Style the tab content */
+.tabcontent {
+    display: none;
+    border-top: none;
+}
+
+.address-element-label {
+    width: 150px;
+    display:inline-block;
+}
+
+.search-field {
+    height: 48px;
+    min-width: 400px;
+    width: 660px;
+    margin: 40px auto 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    border: 0;
+    border-radius: 5px;
+    position: relative;
+    box-sizing: border-box;
+    color: #384144;
+    background-image: linear-gradient(115deg, #1292C2, #1C64B0);
+}
+.search-field.active-select {
+    border-radius: 5px 5px 0 0;
+    border-bottom-color: transparent;
+}
+.select2-selection__placeholder {
+    transition: all ease-in 250ms;
+    font-size: 1.25rem;
+    position: absolute;
+    top: 2px;
+    left: 10px;
+    z-index: 5;
+}
+.active-select .select2-selection__placeholder {
+    transform: scale(0.8);
+    top: -5px;
+    left: -7px;
+    opacity: 0.5;
+}
+.search-field .selection > span{
+    z-index: 10;
+    height: 66px;
+    background: transparent;
+}
+.search-field .select2-container--default .select2-selection--single{
+    outline: none;
+    border: none;
+}
+.search-field .select2-container{
+    outline: none;
+    height: 100%;
+    width: calc(100% + 2px) !important;
+    margin-left: -1px;
+    background-color: rgba(255, 255, 255, 0.8);
+}
+.search-field .select2-container.select2-container--default.select2-container--open{
+    background-color: rgba(255, 255, 255, 0.8);
+    border-radius: 4px 4px 0 0;
+}
+.select2-container.select2-container--default.select2-container--open{
+    color: #384144;
+    background-image: linear-gradient(115deg, #1292C2, #1C64B0);
+    border-radius: 0 0 4px 4px;
+    z-index: 10;
+}
+.select2-container--open .select2-dropdown--below{
+    background-color: rgba(255, 255, 255, 0.8);
+    border: none;
+    border-radius: 0 0 4px 4px;
+}
+.search-field .select2-selection__arrow{
+    display: none;
+}
+.search-field .select2-container--default.select2-container--open.select2-container--below .select2-selection--single, .select2-container--default.select2-container--open.select2-container--below .select2-selection--multiple{
+    background-color: rgba(255, 255, 255, 0.8);
+}
+.search-field .select2-container--default .select2-selection--single .select2-selection__placeholder{
+    color: #384144;
+    font-weight: 300;
+}
+.search-field .select2-container--default .select2-selection--single .select2-selection__rendered{
+    line-height: 48px;
+}
+.select2-container--default .select2-search--dropdown .select2-search__field{
+    -webkit-appearance: none;
+    outline: none;
+    height: 40px;
+    border-radius: 3px;
+    position: relative;
+    width: calc(100% - 6px);
+    left: 3px;
+    font: 400 1rem "ProximaNova";
+    border: none;
+}
+
+.full-address-data{
+    margin: 20px auto 0;
+    width: 660px;
+}
+.address-element{
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.address-element-label{
+    width: 30%;
+    color: #597a8d;
+    text-align: left;
+}
+.address-element-value{
+    width: 70%;
+    height: 40px;
+    box-sizing: border-box;
+    padding: 0 0 0 10px;
+    color: #384144;
+    font: 400 1rem/40px "ProximaNova";
+    text-align: left;
+}
+
+.extra-data-row{
+    height: 50px;
+}
+
+.extra-data-name{
+    width: 40%;
+    color: #597a8d;
+    text-align: left;
+}
+.extra-data-value{
+    height: 40px;
+    box-sizing: border-box;
+    color: #384144;
+    font: 400 1rem/40px "ProximaNova";
+    text-align: left;
+}
+.address-extra-data h3{
+    margin: 20px 0;
+}
+/* Safari fix */
+.opened-select{
+    height: 78px;
+}
+
+@media screen and (max-width: 700px) {
+    .search-field {
+        min-width: initial;
+        width: calc(100% - 20px);
+    }
+    .full-address-data{
+        width: calc(100% - 20px);
+    }
+}
+
+
+/*Custom site styles*/
+.header__menu-item:nth-child(2){
+    margin-right: 20px;
+}

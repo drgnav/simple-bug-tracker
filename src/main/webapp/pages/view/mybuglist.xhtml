@@ -1,0 +1,15 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	template="/templates/buglist.xhtml">
+	<f:metadata>
+		<f:event type="preRenderView" listener="#{toolbar.onMyBugsLoad}" />
+		<f:event type="preRenderView" listener="#{bugList.onMyBugsLoad}" />
+	</f:metadata>
+	<ui:define name="metadata">
+	</ui:define>
+	<ui:define name="title">My buds list form</ui:define>
+</ui:composition>

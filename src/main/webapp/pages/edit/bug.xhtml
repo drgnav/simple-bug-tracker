@@ -1,0 +1,69 @@
+<f:view xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+	<f:metadata>
+		<ui:insert name="metadata" />
+	</f:metadata>
+	<f:metadata>
+		<f:event type="preRenderView" listener="#{bugEdit.onEditBug}" />
+	</f:metadata>
+	<h:head>
+		<ui:include src="/templates/styling.xhtml" />
+	</h:head>
+	<h:body>
+		<div>
+			<h:form id="mainForm" prependId="false">
+				<rich:messages id='form-msg' layout="table" globalOnly="true" />
+
+				<rich:panel header="#{msg[bug.edit.form]}">
+
+					<h:panelGrid columns="3">
+						<h:outputText value="#{msg['id']}:" />
+						<h:outputText value="#{bugEdit.bug.id}" id="bug_id" size="50" />
+						<rich:message for="bug_id" showSummary="true" showDetail="false" />
+						<h:outputText value="#{msg['author']}:" />
+						<h:outputText value="#{bugEdit.bug.author.username}"
+							id="bug_author" size="50" />
+						<rich:message for="bug_author" showSummary="true"
+							showDetail="false" />
+						<h:outputText value="#{msg['bug.number']}:" />
+						<h:inputText value="#{bugEdit.bug.bugNumber}" id="bug_number"
+							size="50" />
+						<rich:message for="bug_number" showSummary="true"
+							showDetail="false" />
+						<h:outputText value="#{msg['description']}:" />
+						<h:inputText value="#{bugEdit.bug.description}"
+							id="bug_description" size="50" />
+						<rich:message for="bug_description" showSummary="true"
+							showDetail="false" />
+						<h:outputText value="#{msg['current.state']}:" />
+						<h:outputText value="#{bugEdit.bug.state.name}"
+							id="bug_current_state" size="50" />
+						<rich:message for="bug_current_state" showSummary="true"
+							showDetail="false" />
+						<h:outputText value="#{msg['next.state']}:" />
+						<h:selectOneMenu value="#{bugEdit.newStateId}" id="bug_state">
+							<f:selectItems value="#{bugEdit.nextStates}" />
+							<f:ajax listener="#{bugEdit.stateChanged}" render="bug_executor" />
+						</h:selectOneMenu>
+						<rich:message for="bug_state" showSummary="true"
+							showDetail="false" />
+						<h:outputText value="#{msg['executor']}:" />
+						<h:selectOneMenu value="#{bugEdit.executorId}" id="bug_executor">
+							<f:selectItems value="#{bugEdit.usersForState}" />
+						</h:selectOneMenu>
+						<rich:message for="bug_executor" showSummary="true"
+							showDetail="false" />
+					</h:panelGrid>
+
+					<a4j:commandButton value="#{msg['save']}" action="#{bugEdit.save}" />
+					<a4j:commandButton value="#{msg['exit']}" action="#{bugEdit.exit}" />
+				</rich:panel>
+
+			</h:form>
+		</div>
+	</h:body>
+</f:view>
