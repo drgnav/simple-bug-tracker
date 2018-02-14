@@ -2,6 +2,8 @@ package ru.drgnav.wellink.bugtracker.service;
 
 import java.security.Principal;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +13,9 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.stereotype.Service;
+import org.springframework.web.context.request.RequestAttributes;
+import org.springframework.web.context.request.RequestContextHolder;
+import org.springframework.web.context.request.ServletRequestAttributes;
 
 import ru.drgnav.wellink.bugtracker.dto.UserDTO;
 import ru.drgnav.wellink.bugtracker.entity.User;
@@ -26,7 +31,7 @@ public class SecurityServiceImpl implements SecurityServices {
 
 	@Autowired
 	private UserRepository userRepo;
-
+	
 	private static final Logger logger = LoggerFactory.getLogger(SecurityServiceImpl.class);
 
 	@Override
