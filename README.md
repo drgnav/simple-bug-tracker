@@ -14,5 +14,7 @@ Run the single executable jar file simple-bug-tracker-0.1.0.jar is located in  t
 java -jar simple-bug-tracker-0.1.0.jar
 Open your favorite browser and connect to http://localhost:8080/
 Enter admin as user name and change_it as password as password in the login form.
+At this time, you can create new user that will be created with password equal its user name.
+A user editor form is not realized yet.
 
 
