@@ -32,10 +32,6 @@ CREATE INDEX fk_user_role_user
 CREATE INDEX fk_user_role_role
    ON user_role (role_id);
 
-SELECT * FROM "user";
-
-SELECT count (*) FROM "user";
-
 INSERT into role (name) VALUES ('ADMINISTRATOR');
 INSERT into role (name) VALUES ('DEVELOPER');
 INSERT into role (name) VALUES ('TESTER');
@@ -44,7 +40,7 @@ INSERT into "user" (username, password)
 INSERT INTO user_role (user_id, role_id) VALUES(
 	(select id from "user" where username = 'admin'),
 	(select id from "role" where name = 'ADMINISTRATOR')
-)
+);
 
 CREATE TABLE bug_state (id SERIAL PRIMARY KEY, name VARCHAR(32) UNIQUE NOT NULL);
 INSERT INTO bug_state (name) values('OPEN'); 
