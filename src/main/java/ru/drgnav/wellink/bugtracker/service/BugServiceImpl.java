@@ -97,7 +97,8 @@ public class BugServiceImpl implements BugService {
 		Bug bug = bugRepo.findOne(bugDTO.getId());
 		if(StringUtils.equals(bug.getBugNumber(), bugDTO.getBugNumber()) 
 				&& StringUtils.equals(bug.getDescription(), bugDTO.getDescription())
-				&& Objects.equals(bug.getState(), bugDTO.getState())) {
+				&& (bug.getState() != null && Objects.equals(bug.getState().getId(), stateId))
+				&& (bug.getExecutor() != null && Objects.equals(bug.getExecutor().getId(), executorId))) {
 			return bugDTO;
 		}
 		//Копируем старую запись

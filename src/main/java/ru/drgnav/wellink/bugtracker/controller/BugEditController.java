@@ -75,11 +75,12 @@ public class BugEditController {
 		this.executorId = executorId;
 	}
 
-	public void save() {
+	public String save() {
 		if (!btUtils.isBugValidForPersist(bug)) {
-			return;
+			return "";
 		}
 		bugService.saveBug(bug, executorId, newStateId);
+		return exit();
 	}
 
 	public String exit() {
