@@ -3,7 +3,7 @@ CREATE TABLE "user"
    id           SERIAL PRIMARY KEY,
    username     VARCHAR (32) UNIQUE NOT NULL,
    password     VARCHAR (128),
-   active       BOOLEAN NOT NULL, 
+   active       BOOLEAN NOT NULL DEFAULT TRUE, 
    creation_time TIMESTAMP WITHOUT TIME ZONE DEFAULT now() 
 );
 
